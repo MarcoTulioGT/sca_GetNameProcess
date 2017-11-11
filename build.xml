@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<project name="HolaMundo" default="deployProject">
+<!--  <property environment="env"/>  -->
+
+    <!--<property file="https://github.com/gihutE2E/OSM/edit/master/buildHolaMundo.properties"/>  -->
+
+    <!-- Antcontrib path -->
+    <path id="antcontrib.path">
+      <pathelement path="\DevOps\libs\ant-contrib-1.0b3.jar" />
+    </path>
+
+    <taskdef classpathref="antcontrib.path" 
+             resource="net/sf/antcontrib/antlib.xml"/>
+
+
+
+
+
+
+
+
+<target name="replaceMDS"> 
+<property name="mds.conn" value="${mds.adfconfig}"/>
+<replace dir="${mds.conn}" token="@jdbc_userid@" value="MDWDESA_MDS" />
+<replace dir="${mds.conn}" token="@jdbc-password@" value="OsmM4n4g3r$" />
+<replace dir="${mds.conn}" token="@jdbc-url@" value="jdbc:oracle:thin:@172.30.13.37:1521:OSM" />
+<replace dir="${mds.conn}" token="@partition-name@" value="soa-infra" />
+<replace dir="${mds.conn}" token="${host}" value="172.30.13.35" />
+<replace dir="${mds.conn}" token="${ip}"  value="8001" />
+
+
+</target>
+
+
+<target name="deployProject" depends="replaceMDS">
+ <property name="proj.compositeName" value="${project}"/>
+		<property name="demo.mode" value="false"/>
+       <property name="proj.compositeDir" value="${applications.home}"/>
+          <propertycopy name="proj.revision" from="${project}.revision"/> 
+       <property name="proj.enabled" value="true"/>
+        <propertycopy name="proj.partition" from="${project}.partition"/>
+      
+    	  <if> 
+          <equals arg1="${demo.mode}" arg2="false"/>
+          <then>
+            <ant antfile="\DevOps\Oracle_SOA\bin\ant-sca-package.xml" inheritAll="false" target="package">
+             <property name="compositeDir" value="${proj.compositeDir}"/>
+             <property name="compositeName" value="${proj.compositeName}"/>
+             <property name="revision" value="${proj.revision}"/>
+             <property name="oracle.home" value="/DevOps/Oracle_SOA/"/>
+             <property name="java.passed.home" value="/usr/java/jdk1.6.0_45/"/>
+             <property name="wl_home" value="${wl_home}"/>
+             <property name="sca.application.home" value="${proj.compositeDir}"/>
+             <property name="scac.application.home" value="${proj.compositeDir}"/>
+             <property name="scac.input" value="${proj.compositeDir}/composite.xml"/>
+             <property name="scac.output" value="/DevOps/temp/${proj.compositeName}.xml"/>
+             <property name="scac.error" value="/DevOps/temp/${proj.compositeName}.err"/>
+             <property name="scac.displayLevel" value="3"/>
+            </ant>	
+
+            <copy todir="${proj.compositeDir}\deploy" 
+                  file="${proj.compositeDir}\deploy\sca_${proj.compositeName}_rev${proj.revision}.jar"/>
+
+          </then>
+        </if>  
+        
+        <property name="deploy.sarLocation" 
+        	value="${proj.compositeDir}/deploy/sca_${proj.compositeName}_rev${proj.revision}.jar"/>
+        <property name="deploy.configplan"  
+        	value="${deployment.plan.environment}.xml"/>
+
+       	  <if> 
+          <equals arg1="${demo.mode}" arg2="false"/>
+          <then>
+         
+		         <ant antfile="\DevOps\Oracle_SOA\bin\ant-sca-deploy.xml" inheritAll="false" target="deploy">
+		             <property name="wl_home" value="${wl_home}"/>
+		             <property name="oracle.home" value="/DevOps/Oracle_SOA/"/>
+		          <!--   <property name="serverURL" value="${deploy.serverURL}"/> -->
+				 <property name="serverURL" value="http://172.30.13.35:8001"/> 
+		             <property name="user" value="mdwdesa_admin"/>
+		             <property name="password" value="wls@2016!mdwdesa"/>
+		             <property name="overwrite" value="true"/>
+		             <property name="forceDefault" value="true"/>
+		             <property name="sarLocation" value="${deploy.sarLocation}"/>
+		             <property name="configplan" value="${deploy.configplan}"/>
+		             <property name="partition" value="${proj.partition}"/>
+		        </ant>	
+          </then>
+        </if>  
+        
+        <if> 
+          <equals arg1="${proj.enabled}" arg2="false"/>
+          <then>
+		        <echo message="stop ${proj.compositeName}"
+    		          level="info"/>
+        		<echo file="logs/instance-${build.number}.log" append="true" 
+            		  message="------>stop ${proj.compositeName}${line.separator}"
+              		level="info"/>
+		    	  <if> 
+		          <equals arg1="${demo.mode}" arg2="true"/>
+		          <then>
+			            <ant antfile="/DevOps/Oracle_SOA/bin/ant-sca-mgmt.xml" inheritAll="false" target="stopComposite">
+			                  <property name="host" value="172.30.13.35"/>
+			                  <property name="port" value="8001"/>
+			                  <property name="user" value="mdwdesa_admin"/>
+			                  <property name="password" value="wls@2016!mdwdesa"/>
+			                  <property name="compositeName" value="${proj.compositeName}"/>
+			                  <property name="revision" value="${proj.revision}"/>
+			                  <property name="partition" value="${proj.partition}"/>
+			            </ant>	
+		          </then>
+		        </if>  
+          </then>
+        </if>
+
+        <if> 
+          <equals arg1="${proj.enabled}" arg2="false"/>
+          <then>
+		        <echo message="stop activate ${proj.compositeName}"
+    		          level="info"/>
+        		<echo file="logs/instance-${build.number}.log" append="true" 
+            		  message="------>activate ${proj.compositeName}${line.separator}"
+              		level="info"/>
+		    	  <if> 
+		          <equals arg1="${demo.mode}" arg2="true"/>
+		          <then>
+			            <ant antfile="/DevOps/Oracle_SOA/bin/ant-sca-mgmt.xml" inheritAll="false" 
+			            	   target="activateComposite">
+			                  <property name="host" value="172.30.13.35"/>
+			                  <property name="port" value="8001"/>
+			                  <property name="user" value="mdwdesa_admin"/>
+			                  <property name="password" value="wls@2016!mdwdesa"/>
+			                  <property name="compositeName" value="${proj.compositeName}"/>
+			                  <property name="revision" value="${proj.revision}"/>
+			                  <property name="partition" value="${proj.partition}"/>
+			            </ant>	
+		          </then>
+		        </if>  
+
+
+		        <echo message="unit test ${proj.compositeName}"
+    		          level="info"/>
+        		<echo file="logs/instance-${build.number}.log" append="true" 
+            		  message="------>unit test ${proj.compositeName}${line.separator}"
+              		level="info"/>
+		    	          </then>
+        </if>        
+        <echo message="finish"
+ 		          level="info"/>
+     		<echo file="logs/instance-${build.number}.log" append="true" 
+         		  message="------>finish${line.separator}"
+          		level="info"/>
+    </target> 
+</project>
