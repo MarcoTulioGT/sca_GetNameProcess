@@ -38,17 +38,8 @@ pipeline {
     stage('Artefactory') {
       steps {
         script{
-                   // Get Artifactory server instance, defined in the Artifactory Plugin administration page.
-        def server = Artifactory.server "Artifactory_CRM"
-        // Create an Artifactory Maven instance.
-       def rtMaven = Artifactory.newMavenBuild()
-       def buildInfo
-           rtMaven.tool = 'Maven_Oracle'
-          rtMaven.deployer releaseRepo:'Tigo', server: server
-           buildInfo = rtMaven.run pom: 'pom.xml', goals: 'artifactoryPublish'
-             server.publishBuildInfo buildInfo
-        echo 'Deploying....'
-        echo "RESULT: ${currentBuild.result}"
+        sh 'curl -u myUser:myP455w0rd! -X PUT "http://172.22.71.6:8081/artifactory/tf/om/ic/sca_GetNameProcessCRM_rev1.0.jar" -T $WORKSPACE/target/sca_GetNameProcessCRM_rev1.0.jar
+'
         }
       }
 	  
