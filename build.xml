@@ -14,25 +14,7 @@
 
 
 
-
-
-
-
-
-<target name="replaceMDS"> 
-<property name="mds.conn" value="${mds.adfconfig}"/>
-<replace dir="${mds.conn}" token="@jdbc_userid@" value="MDWDESA_MDS" />
-<replace dir="${mds.conn}" token="@jdbc-password@" value="OsmM4n4g3r$" />
-<replace dir="${mds.conn}" token="@jdbc-url@" value="jdbc:oracle:thin:@172.30.13.37:1521:OSM" />
-<replace dir="${mds.conn}" token="@partition-name@" value="soa-infra" />
-<replace dir="${mds.conn}" token="${host}" value="172.30.13.35" />
-<replace dir="${mds.conn}" token="${ip}"  value="8001" />
-
-
-</target>
-
-
-<target name="deployProject" depends="replaceMDS">
+<target name="deployProject" >
  <property name="proj.compositeName" value="${project}"/>
 		<property name="demo.mode" value="false"/>
        <property name="proj.compositeDir" value="${applications.home}"/>
