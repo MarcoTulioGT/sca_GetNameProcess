@@ -18,7 +18,7 @@ pipeline {
            def antHome = tool 'Apache Ant(TM) version 1.10.1'
            env.PATH = "${antHome}/bin:${env.PATH}"
            echo 'Compilando aplicación'
-           sh 'ant -Dapplications.home=$WORKSPACE -Dproject=sca_GetNameProcessCRM  -Dbuild.number=16032017 -Dsca_GetNameProcessCRM.compositeName=sca_GetNameProcessCRM  -Dsca_GetNameProcessCRM.revision=1.0  -Dsca_GetNameProcessCRM.partition=E2E -Ddeployment.plan.environment=cfg_plan  -Dmds.adfconfig=0'
+           sh 'ant -Dapplications.home=$WORKSPACE -Dproject=sca_GetNameProcessCRM  -Dbuild.number=16032017 -Dsca_GetNameProcessCRM.compositeName=sca_GetNameProcessCRM  -Dsca_GetNameProcessCRM.revision=1.0  -Dsca_GetNameProcessCRM.partition=E2E -Ddeployment.plan.environment=cfg_plan  
                 }
 
         echo 'Compilando...'
