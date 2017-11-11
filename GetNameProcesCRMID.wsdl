@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions name="GetNameProcesCRMID" targetNamespace="http://xmlns.oracle.com/OSM_TIGO_1_7/GetNameProcessCRM/GetNameProcesCRMID" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:client="http://xmlns.oracle.com/OSM_TIGO_1_7/GetNameProcessCRM/GetNameProcesCRMID" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+   <wsdl:types>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema">
+         <import namespace="http://xmlns.oracle.com/OSM_TIGO_1_7/GetNameProcessCRM/GetNameProcesCRMID" schemaLocation="xsd/GetNameProcesCRMID.xsd"/>
+      </schema>
+   </wsdl:types>
+   <wsdl:message name="GetNameProcesCRMIDRequestMessage">
+      <wsdl:part name="payload" element="client:process"/>
+   </wsdl:message>
+   <wsdl:message name="GetNameProcesCRMIDResponseMessage">
+      <wsdl:part name="payload" element="client:processResponse"/>
+   </wsdl:message>
+   <wsdl:portType name="GetNameProcesCRMID">
+      <wsdl:operation name="process">
+         <wsdl:input message="client:GetNameProcesCRMIDRequestMessage"/>
+         <wsdl:output message="client:GetNameProcesCRMIDResponseMessage"/>
+      </wsdl:operation>
+   </wsdl:portType>
+   <plnk:partnerLinkType name="GetNameProcesCRMID">
+      <plnk:role name="GetNameProcesCRMIDProvider" portType="client:GetNameProcesCRMID"/>
+   </plnk:partnerLinkType>
+</wsdl:definitions>

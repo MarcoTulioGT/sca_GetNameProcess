@@ -1,0 +1,194 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dvm name="procesNameCRM" xmlns="http://xmlns.oracle.com/dvm">
+   <description/>
+   <columns>
+      <column name="NAMESIEBEL"/>
+      <column name="NAMEOSM"/>
+   </columns>
+   <rows>
+      <row>
+         <cell>Temporal consumption limit</cell>
+         <cell>CLT</cell>
+      </row>
+      <row>
+         <cell>Permanent consumption limit</cell>
+         <cell>CLP</cell>
+      </row>
+      <row>
+         <cell>SimCardReplaceUpdate</cell>
+         <cell>CS</cell>
+      </row>
+      <row>
+         <cell>CambiodeplanNuevo</cell>
+         <cell>CP</cell>
+      </row>
+      <row>
+         <cell>Cambio de limite temporal</cell>
+         <cell>CLT</cell>
+      </row>
+      <row>
+         <cell>Cambio de limite permanente</cell>
+         <cell>CLP</cell>
+      </row>
+      <row>
+         <cell>Block</cell>
+         <cell>BL</cell>
+      </row>
+      <row>
+         <cell>Unblock</cell>
+         <cell>UBL</cell>
+      </row>
+      <row>
+         <cell>SimCardReplaceModificar</cell>
+         <cell>CS</cell>
+      </row>
+      <row>
+         <cell>Alta TB</cell>
+         <cell>TBA</cell>
+      </row>
+      <row>
+         <cell>Baja TB</cell>
+         <cell>BTB</cell>
+      </row>
+      <row>
+         <cell>Cesion TB</cell>
+         <cell>CTB</cell>
+      </row>
+      <row>
+         <cell>Traslado TB</cell>
+         <cell>TTB</cell>
+      </row>
+      <row>
+         <cell>Renovacion TB</cell>
+         <cell>RTB</cell>
+      </row>
+      <row>
+         <cell>Cambio de Plan TB</cell>
+         <cell>CPTB</cell>
+      </row>
+      <row>
+         <cell>Upgrade TB</cell>
+         <cell>UTB</cell>
+      </row>
+      <row>
+         <cell>Downgrade TB</cell>
+         <cell>DTB</cell>
+      </row>
+      <row>
+         <cell>Traslado + Renovacion TB</cell>
+         <cell>TRTB</cell>
+      </row>
+      <row>
+         <cell>Traslado + Upgrade TB</cell>
+         <cell>TUTB</cell>
+      </row>
+      <row>
+         <cell>Traslado + Downgrade TB</cell>
+         <cell>TDTB</cell>
+      </row>
+      <row>
+         <cell>Traslado + Upgrade + Ren TB</cell>
+         <cell>TURTB</cell>
+      </row>
+      <row>
+         <cell>Traslado + Down + Ren TB</cell>
+         <cell>TDRTB</cell>
+      </row>
+      <row>
+         <cell>Upgrade + Renovacion TB</cell>
+         <cell>URTB</cell>
+      </row>
+      <row>
+         <cell>Downgrade + Renovacion TB</cell>
+         <cell>DRTB</cell>
+      </row>
+      <row>
+         <cell>TRASLADO</cell>
+         <cell>TPV_TB</cell>
+      </row>
+      <row>
+         <cell>RENOVACION</cell>
+         <cell>RPV_TB</cell>
+      </row>
+      <row>
+         <cell>TRASLADO + UPGRADE</cell>
+         <cell>TUPV_TB</cell>
+      </row>
+      <row>
+         <cell>CAMBIO PLAN</cell>
+         <cell>CPV_TB</cell>
+      </row>
+      <row>
+         <cell>DOWNGRADE + RENOVACION</cell>
+         <cell>DRV_TB</cell>
+      </row>
+      <row>
+         <cell>DOWNGRADE</cell>
+         <cell>DV_TB</cell>
+      </row>
+      <row>
+         <cell>TRASLADO + DOWNGRADE + REN</cell>
+         <cell>TDRV_TB</cell>
+      </row>
+      <row>
+         <cell>TRASLADO + DOWNGRADE</cell>
+         <cell>TDV_TB</cell>
+      </row>
+      <row>
+         <cell>TRASLADO + RENOVACION</cell>
+         <cell>TRV_TB</cell>
+      </row>
+      <row>
+         <cell>TRASLADO + UPGRADE + REN</cell>
+         <cell>TURV_TB</cell>
+      </row>
+      <row>
+         <cell>UPGRADE + RENOVACION</cell>
+         <cell>URV_TB</cell>
+      </row>
+      <row>
+         <cell>UPGRADE</cell>
+         <cell>UV_TB</cell>
+      </row>
+      <row>
+         <cell>Servicio de Telefonia Movil</cell>
+         <cell>VOZ GENERAL</cell>
+      </row>
+      <row>
+         <cell>CS</cell>
+         <cell>CAMBIO DE SIM</cell>
+      </row>
+      <row>
+         <cell>BL</cell>
+         <cell>BLOQUEO</cell>
+      </row>
+      <row>
+         <cell>UBL</cell>
+         <cell>DESBLOQUEO</cell>
+      </row>
+      <row>
+         <cell>CLT</cell>
+         <cell>CAMBIO DE LIMITE DE CONSUMO TEMPORAL</cell>
+      </row>
+      <row>
+         <cell>CAMBIO DE SIM</cell>
+         <cell>DESEO CAMBIAR MI SIM</cell>
+      </row>
+      <row>
+         <cell>Baja</cell>
+         <cell>BPL</cell>
+      </row>
+      <row>
+         <cell>ALTA PV TB</cell>
+         <cell>APV_TB</cell>
+      </row>
+      <row>
+         <cell>BAJA PV TB</cell>
+         <cell>BPV_TB</cell>
+      </row>
+      <row>
+         <cell>CESION PV TB</cell>
+         <cell>CEPV_TB</cell>
+      </row>
+   </rows>
+</dvm>

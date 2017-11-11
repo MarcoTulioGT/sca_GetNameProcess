@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Mediator name="GetProcessNameCRM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.oracle.com/sca/1.0/mediator" wsdlTargetNamespace="http://xmlns.oracle.com/OSM_TIGO_1_7/GetNameProcessCRM/GetNameProcesCRMID">
+   <operation name="process" deliveryPolicy="AllOrNothing" priority="4" validateSchema="false">
+      <switch>
+         <case executionType="direct" name="echo.process">
+            <action>
+               <transform>
+                  <part name="$out.payload" function="xslt(xsl/Transformation_ToDVMProcessName.xsl, $in.payload)"/>
+               </transform>
+               <echo/>
+            </action>
+         </case>
+      </switch>
+   </operation>
+</Mediator>

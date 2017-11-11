@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<composite name="GetNameProcessCRM" applicationName="ffs" revision="1.0" label="soa_1cccdca1-e288-49a3-b909-44b091eb7290" mode="active" state="on" home="/u01/app/oracle/osm/domains/osmsoaprod_domain/servers/soa_server01/dc/soa_1cccdca1-e288-49a3-b909-44b091eb7290" xmlns:ui="http://xmlns.oracle.com/soa/designer/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://xmlns.oracle.com/sca/1.0">
+   <import location="GetNameProcesCRMID.wsdl" importType="wsdl" namespace="http://xmlns.oracle.com/OSM_TIGO_1_7/GetNameProcessCRM/GetNameProcesCRMID"/>
+   <service name="getnameprocescrmid_client_ep" ui:wsdlLocation="GetNameProcesCRMID.wsdl">
+      <interface.wsdl interface="http://xmlns.oracle.com/OSM_TIGO_1_7/GetNameProcessCRM/GetNameProcesCRMID#wsdl.interface(GetNameProcesCRMID)"/>
+      <binding.ws port="http://xmlns.oracle.com/OSM_TIGO_1_7/GetNameProcessCRM/GetNameProcesCRMID#wsdl.endpoint(getnameprocescrmid_client_ep/GetNameProcesCRMID_pt)" streamIncomingAttachments="false" streamOutgoingAttachments="false"/>
+   </service>
+   <property name="auditLevel" many="false">Production</property>
+   <property name="validateSchema" many="false">false</property>
+   <property name="productVersion" type="xs:string" many="false">11.1.1.7.8</property>
+   <component name="GetProcessNameCRM">
+      <implementation.mediator src="GetProcessNameCRM.mplan"/>
+      <property name="isResequencing" many="false" override="may">false</property>
+      <business-events/>
+   </component>
+   <wire>
+      <source.uri>getnameprocescrmid_client_ep</source.uri>
+      <target.uri>GetProcessNameCRM/GetProcessNameCRM</target.uri>
+   </wire>
+</composite>
