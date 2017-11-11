@@ -15,12 +15,10 @@ pipeline {
         echo 'Verificando...'
         sh 'pwd'
           script {
-           def mvnHome = tool 'Maven_Oracle'
-           env.PATH = "${mvnHome}/bin:${env.PATH}"
-           echo "var mvnHome='${mvnHome}'"
-           echo "var env.PATH='${env.PATH}'"
+           def antHome = tool 'Apache Ant(TM) version 1.10.1'
+           env.PATH = "${antHome}/bin:${env.PATH}"
            echo 'Compilando aplicación'
-           sh 'mvn clean'
+           sh 'ant /DevOps/QA.xml applications.home=$WORKSPACE project=sca_GetNameProcessCRM build.number=16032017'
                 }
 
         echo 'Compilando...'
