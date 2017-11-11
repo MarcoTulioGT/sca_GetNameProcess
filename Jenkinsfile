@@ -7,7 +7,7 @@ pipeline {
 	   // properties([pipelineTriggers([[$class: 'GitHubPushTrigger'], pollSCM('H/3 * * * *')])])
       steps 
       {
-        git poll: true, url: 'https://github.com/MarcoTulioGT/TomcatWS.git'
+        git poll: true, url: 'https://github.com/MarcoTulioGT/sca_GetNameProcess.git'
       }
     }
     stage('Build') {
@@ -24,11 +24,11 @@ pipeline {
                 }
 
         echo 'Compilando...'
-          sh 'mvn compile'
+          
         echo 'Empaquetando...'
-          sh 'mvn install'
+          
         echo 'Desplegando...'
-          sh 'mvn tomcat7:deploy'
+         
       }
     }
     stage('Test') {
