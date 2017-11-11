@@ -38,7 +38,7 @@ pipeline {
     stage('Artefactory') {
       steps {
         script{
-        sh 'curl -u myUser:myP455w0rd! -X PUT "http://172.22.71.6:8081/artifactory/tf/om/ic/sca_GetNameProcessCRM_rev1.0.jar" -T $WORKSPACE/target/sca_GetNameProcessCRM_rev1.0.jar'
+        sh 'curl -u admin:#jfrog17Tigo -X PUT "http://172.22.71.6:8081/artifactory/tf/om/ic/sca_GetNameProcessCRM_rev1.0.jar" -T $WORKSPACE/target/sca_GetNameProcessCRM_rev1.0.jar'
 
         }
       }
