@@ -40,14 +40,14 @@
              <property name="scac.displayLevel" value="3"/>
             </ant>	
 
-            <copy todir="${proj.compositeDir}\deploy" 
-                  file="${proj.compositeDir}\deploy\sca_${proj.compositeName}_rev${proj.revision}.jar"/>
+            <copy todir="${proj.compositeDir}\target" 
+                  file="${proj.compositeDir}\target\${proj.compositeName}_rev${proj.revision}.jar"/>
 
           </then>
         </if>  
         
         <property name="deploy.sarLocation" 
-        	value="${proj.compositeDir}/deploy/sca_${proj.compositeName}_rev${proj.revision}.jar"/>
+        	value="${proj.compositeDir}/target/sca_${proj.compositeName}_rev${proj.revision}.jar"/>
         <property name="deploy.configplan"  
         	value="${deployment.plan.environment}.xml"/>
 
