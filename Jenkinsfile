@@ -32,7 +32,8 @@ pipeline {
     stage('Test') {
       steps {
 	         echo 'Testing...'
-       // sh 'mvn com.smartbear.soapui:soapui-maven-plugin:4.6.1:test'
+       sh 'ant /CI_QA/ant-jmeter.xml -DworkspacePath=$WORKSPACE -Dnamejmx=GetNameProcessCRM -Dambientename=DEV'
+       //sh 'ant curl -u admin:#jfrog17Tigo -X PUT "http://172.22.71.6:8081/artifactory/Tigo/tf/om/ic/sca_GetNameProcessCRM_rev1.0.jar" -T $WORKSPACE/target/sca_GetNameProcessCRM_rev1.0.jar'
       }
     }
     stage('Artefactory') {
