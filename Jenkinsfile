@@ -33,7 +33,7 @@ pipeline {
       steps {
 	         echo 'Testing...'
        sh 'ant -buildfile /CI_QA/ant-jmeter.xml -DworkspacePath=$WORKSPACE -Dnamejmx=Testplan/GetNameProcessCRM -Dambientename=DEV'
-       //sh 'ant curl -u admin:#jfrog17Tigo -X PUT "http://172.22.71.6:8081/artifactory/Tigo/tf/om/ic/sca_GetNameProcessCRM_rev1.0.jar" -T $WORKSPACE/target/sca_GetNameProcessCRM_rev1.0.jar'
+       sh 'ant curl -u admin:#jfrog17Tigo -X PUT "http://172.22.71.6:8081/artifactory/Tigo/tf/om/ic/DEV_Testplan/*" -T $WORKSPACE/DEV_Testplan/*'
       }
     }
     stage('Artefactory') {
