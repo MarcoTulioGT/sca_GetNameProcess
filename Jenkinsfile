@@ -45,7 +45,7 @@ pipeline {
        def buildInfo
            rtMaven.tool = 'Maven_Oracle'
           rtMaven.deployer releaseRepo:'Tigo', server: server
-           buildInfo = rtMaven.run pom: 'pom.xml', goals: 'install'
+           buildInfo = rtMaven.run pom: 'pom.xml', goals: 'artifactoryPublish'
              server.publishBuildInfo buildInfo
         echo 'Deploying....'
         echo "RESULT: ${currentBuild.result}"
